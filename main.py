@@ -32,6 +32,7 @@ def greetings(message):
         bot.reply_to(message, f"Привет {message.from_user.first_name}! Я бот, который поможет тебе найти "
                               "информацию о матчах Английской Премьер-лиги. Выберите дату матча:")
 
+
 @bot.callback_query_handler(func=lambda callback: True)
 def callback_message(callback):
     global date_of_event

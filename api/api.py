@@ -1,8 +1,8 @@
 import requests
 
-url = "https://livescore6.p.rapidapi.com/leagues/v2/list"
+url = "https://livescore6.p.rapidapi.com/matches/v2/list-by-date"
 
-querystring = {"Category":"soccer"}
+querystring = {"Category":"soccer","Date":"20201028","Timezone":"-7"}
 
 headers = {
 	"x-rapidapi-key": "ec925d340cmsh274017ddced15cep1715cbjsnb3f1eb6cac5f",
