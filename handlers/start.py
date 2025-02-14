@@ -24,20 +24,3 @@ def bot_start(message: Message):
         bot.reply_to(message, f"{first_name}, рад вас снова видеть! Хотите посмотреть информацию о матчах?")
 
 
-@bot.message_handler(content_types="text")
-def message_reply(message: Message):
-    if message.text.lower() in ["привет", "здравствуйте"]:
-        user_id = message.from_user.id
-        username = message.from_user.username
-        first_name = message.from_user.first_name
-        last_name = message.from_user.last_name
-        try:
-            User.create(
-                user_id=user_id,
-                username=username,
-                first_name=first_name,
-                last_name=last_name,
-            )
-            bot.reply_to(message, f"{first_name}, добро пожаловать в мой чат-бот!")
-        except IntegrityError:
-            bot.reply_to(message, f"{first_name}, рад вас снова видеть!")
