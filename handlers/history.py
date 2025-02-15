@@ -1,9 +1,6 @@
 from typing import List
-
 from telebot.types import Message
-
 from loader import bot
-
 from database.models import User, History
 
 
@@ -25,4 +22,3 @@ def handle_history(message: Message) -> None:
         bot.send_message(message.from_user.id, "У вас ещё нет запросов")
         return
     bot.send_message(message.from_user.id, "\n".join(result))
-    

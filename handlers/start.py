@@ -2,6 +2,7 @@ from telebot.types import Message
 from loader import bot
 from peewee import IntegrityError
 from database.models import User
+from handlers.help import bot_help
 
 
 @bot.message_handler(commands=["start"])
@@ -24,3 +25,7 @@ def bot_start(message: Message):
         bot.reply_to(message, f"{first_name}, рад вас снова видеть! Хотите посмотреть информацию о матчах?")
 
 
+@bot.message_handler(func=lambda message: True)
+def handle_message(message):
+    bot.reply_to(message, f"Получено сообщение: {message.text}\n")
+    bot_help(message=message)
