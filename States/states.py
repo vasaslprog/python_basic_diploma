@@ -2,7 +2,6 @@ from telebot.handler_backends import State, StatesGroup
 from telebot.types import Message
 from loader import bot
 from database.models import Games
-from utils.misc.log_request import log_request
 
 
 class UserState(StatesGroup):

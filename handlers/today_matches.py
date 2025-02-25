@@ -1,6 +1,6 @@
 import datetime
-from own_api.find_matches_by_day import find_matches_by_date
-from own_api.find_cur_league import sorted_info_by_league
+from api.find_matches_by_day import find_matches_by_date
+from api.find_cur_league import sorted_info_by_league
 from telebot.types import Message
 from loader import bot
 
@@ -12,3 +12,5 @@ def handler_today_matches(message: Message):
     matches_list = sorted_info_by_league()
 
     bot.reply_to(message, '\n'.join(map(str, matches_list)))
+
+
