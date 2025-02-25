@@ -8,11 +8,11 @@ else:
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_KEY = os.getenv("API_KEY")
-DB_PATH = r"C:\Users\julia\PycharmProjects\python_basic_diploma\database\database.db"
+DB_PATH = r"..\database"
 DEFAULT_COMMANDS = (
     ("start", "Запустить бота"),
     ("help", "Вывести справку"),
     ("today_matches", "Вывести матчи на сегодня"),
     ("custom_matches", "Вывести матчи на указанную дату"),
-    ("history", "Вывести последние 10 запросов"),
+    ("history", "Вывести последние ваши 10 запросов"),
 )

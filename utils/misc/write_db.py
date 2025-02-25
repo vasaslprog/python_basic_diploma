@@ -8,18 +8,13 @@ from database.models import Games
 
 
 def writing_to_db():
-    url = "https://odds.p.rapidapi.com/v4/sports/icehockey_nhl/odds"
+    url = "https://livescore6.p.rapidapi.com/matches/v2/list-by-date"
 
-    querystring = {
-        "regions": "eu",
-        "oddsFormat": "decimal",
-        "markets": "h2h",
-        "dateFormat": "iso",
-    }
+    querystring = {"Category":"soccer","Date": your_date,"Timezone":"-7"}
 
     headers = {
-        "X-RapidAPI-Key": "ff58899001msh74a21aecad4795ep1c4d3fjsnbc4ae75a37dd",
-        "X-RapidAPI-Host": "odds.p.rapidapi.com",
+        "x-rapidapi-key": os.getenv('API_KEY'),
+        "x-rapidapi-host": "livescore6.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
 

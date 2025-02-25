@@ -7,6 +7,9 @@ from handlers.help import bot_help
 
 @bot.message_handler(commands=["start"])
 def bot_start(message: Message):
+    file = open('ENG_PR_LEAGUE.jpg', 'rb')
+    bot.send_photo(message.chat.id, file)
+
     user_id = message.from_user.id
     username = message.from_user.username
     first_name = message.from_user.first_name
@@ -20,9 +23,12 @@ def bot_start(message: Message):
         )
         bot.reply_to(message, f"{first_name}, добро пожаловать в мой чат-бот! Я бот, который поможет тебе "
                               f"найти информацию о матчах Английской Премьер-лиги.\n"
-                              f"Хотите посмотреть информацию о матчах?")
+                              f"Используйте команду /help для подробной информации"
+                              f" или введите известную вам команду")
     except IntegrityError:
-        bot.reply_to(message, f"{first_name}, рад вас снова видеть! Хотите посмотреть информацию о матчах?")
+        bot.reply_to(message, f"{first_name}, рад вас снова видеть! Хотите посмотреть информацию о матчах?"
+                              f"Используйте команду /help для подробной информации"
+                              f" или введите известную вам команду")
 
 
 @bot.message_handler(func=lambda message: True)
