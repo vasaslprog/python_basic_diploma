@@ -2,6 +2,8 @@ import database.models
 from loader import bot
 from utils.set_bot_commands import set_default_commands
 from telebot.custom_filters import StateFilter
+import handlers
+import api
 
 
 if __name__ == "__main__":

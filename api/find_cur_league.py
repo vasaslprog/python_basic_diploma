@@ -1,9 +1,13 @@
+import os
+import sys
+
+
 def sorted_info_by_league():
     import json
     list_of_APL_matches = []
     count_match = 0
-
-    with open("../matches_by_date.json", "r") as file:
+    script_dir = os.path.dirname(sys.argv[0])
+    with open(os.path.join(script_dir, "matches_by_date.json"), "r") as file:
         j_file = json.load(file)
     for i_champs in j_file["Stages"]:
         if i_champs["Sid"] == '18173':
