@@ -6,7 +6,6 @@ from peewee import (
     IntegerField,
     Model,
     SqliteDatabase,
-    FloatField,
 )
 
 from config_data.config import DB_PATH
