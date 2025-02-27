@@ -12,6 +12,10 @@ def handler_today_matches(message: Message):
     find_matches_by_date(your_date=date_of_event)
     matches_list = sorted_info_by_league()
 
-    bot.reply_to(message, '\n'.join(map(str, matches_list)))
+    if len(matches_list) > 0:
+        bot.reply_to(message, "Список матчей сегодня:\n" + "\n".join(map(str, matches_list)))
+    else:
+        bot.reply_to(message, "\nНет матчей сегодня."
+                              r"Попробуйте выбрать другую дату, используя команду /custom_matches")
 
 

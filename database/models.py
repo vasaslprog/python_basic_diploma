@@ -32,9 +32,7 @@ class Games(BaseModel):
     time_req = DateTimeField()
     home_team = CharField()
     away_team = CharField()
-    title = CharField()
-    name_team = CharField()
-    price = FloatField()
+    score = CharField()
 
 
 class History(BaseModel):

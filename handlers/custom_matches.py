@@ -17,10 +17,11 @@ def check_and_run(msg):
     date_text = msg.text
     date_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
     if date_pattern.match(date_text):
-        print("сходится!")
-
         date_of_event = str(date_text).replace("-", "")
-
         find_matches_by_date(your_date=date_of_event)
         matches_list = sorted_info_by_league()
-        bot.reply_to(msg, '\n'.join(map(str, matches_list)))
+        if len(matches_list) > 0:
+            bot.reply_to(msg, f"Список матчей на дату {date_text}:\n" + "\n".join(map(str, matches_list)))
+        else:
+            bot.reply_to(msg, "\nНет матчей в выбранную вами дату."
+                              r"Попробуйте выбрать другую дату, используя команду /custom_matches")

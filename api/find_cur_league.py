@@ -1,11 +1,11 @@
+import datetime
 import os
 import sys
-
+from database.models import Games
 
 def sorted_info_by_league():
     import json
     list_of_APL_matches = []
-    count_match = 0
     script_dir = os.path.dirname(sys.argv[0])
     with open(os.path.join(script_dir, "matches_by_date.json"), "r") as file:
         j_file = json.load(file)
@@ -14,15 +14,25 @@ def sorted_info_by_league():
             for i_info in i_champs["Events"]:
 
                 if i_info["Eps"] == "NS":
-                    count_match += 1
-                    time_begin = str(int(str(i_info["Esd"])[8:10]) + 10) + ":" + str(i_info["Esd"])[10:12]
-                    nr_tour = i_info["ErnInf"]  # номер тура чемпионата
-                    match_id = i_info["Eid"]  # id конкретного матча, нужен, чтобы найти матч в другом запросе API
-                    team1 = i_info["T1"][0]["Nm"]  # команда хозяев
-                    team2 = i_info["T2"][0]["Nm"]  # команда гостей
-                    team1_id = i_info["T1"][0]["ID"]  # id команды хозяев
-                    team2_id = i_info["T2"][0]["ID"]  # id команды гостей
-                    list_of_APL_matches.append(f"Номер тура: {nr_tour},{time_begin} Команда хозяев {team1} : {team2} Команда гостей")
-                    # print(f"Время начала: {time_begin} Команда хозяев {team1} : {team2} Команда гостей")
-    # print(list_of_APL_matches)
+                    final_score = "матч не завершен"
+                else:
+                    final_score = i_info["Tr1"] + " : " + i_info["Tr2"]
+                print(final_score)
+                time_begin = str(int(str(i_info["Esd"])[8:10]) + 10) + ":" + str(i_info["Esd"])[10:12]
+                nr_tour = i_info["ErnInf"]  # номер тура чемпионата
+                match_id = i_info["Eid"]  # id конкретного матча, нужен, чтобы найти матч в другом запросе API
+                team1 = i_info["T1"][0]["Nm"]  # команда хозяев
+                team2 = i_info["T2"][0]["Nm"]  # команда гостей
+                team1_id = i_info["T1"][0]["ID"]  # id команды хозяев
+                team2_id = i_info["T2"][0]["ID"]  # id команды гостей
+                list_of_APL_matches.append(f"{time_begin} {team1} - {team2}")
+
+                Games.create(
+                game_id=match_id,
+                time_req=datetime.datetime.now(),
+                home_team=team1,
+                away_team=team2,
+                score=final_score,
+                )
+
     return list_of_APL_matches
