@@ -25,7 +25,7 @@ def sorted_info_by_league() -> List:
                 match_id = i_info["Eid"]  # id конкретного матча, нужен, чтобы найти матч в другом запросе API
                 team1 = i_info["T1"][0]["Nm"]  # команда хозяев
                 team2 = i_info["T2"][0]["Nm"]  # команда гостей
-                team1_id = i_info["T1"][0]["ID"]  # id команды хозяев - nj;t lkz ,eleob[ bpvtytybq ghjtrnf
+                team1_id = i_info["T1"][0]["ID"]  # id команды хозяев - для будущих изменений проекта
                 team2_id = i_info["T2"][0]["ID"]  # id команды гостей - для будущих изменений проекта
                 list_of_APL_matches.append(f"{time_begin} {team1} - {team2}")
 
