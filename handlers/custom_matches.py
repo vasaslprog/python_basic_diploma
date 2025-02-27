@@ -9,12 +9,12 @@ from database.models import History
 
 
 @bot.message_handler(commands=["custom_matches"])
-def handler_today_matches(message: Message):
+def handler_today_matches(message: Message) -> None:
     bot.reply_to(message, "Укажите дату в формате гггг-мм-дд, например 2025-02-25")
     bot.register_next_step_handler(message, check_and_run)
 
 
-def check_and_run(msg):
+def check_and_run(msg: Message) -> None:
     date_text = msg.text
     date_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
     if date_pattern.match(date_text):
@@ -31,6 +31,6 @@ def check_and_run(msg):
             user=msg.from_user.id,
             name_users=msg.from_user.first_name,
             time_req=datetime.datetime.now(),
-            command="today_matches",
+            command="custom_matches",
             res_func=matches_list,
         )

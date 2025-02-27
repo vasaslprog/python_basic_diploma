@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 
-def find_matches_by_date(your_date):
+def find_matches_by_date(your_date: str) -> None:
 	url = "https://livescore6.p.rapidapi.com/matches/v2/list-by-date"
 	querystring = {"Category":"soccer","Date": your_date,"Timezone":"-7"}
 

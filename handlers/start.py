@@ -5,7 +5,7 @@ from database.models import User
 
 
 @bot.message_handler(commands=["start"])
-def bot_start(message: Message):
+def bot_start(message: Message) -> None:
 
     user_id = message.from_user.id
     username = message.from_user.username

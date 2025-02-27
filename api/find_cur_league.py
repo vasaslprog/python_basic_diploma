@@ -1,10 +1,13 @@
 import datetime
 import os
 import sys
-from database.models import Games
+from typing import List
 
-def sorted_info_by_league():
-    import json
+from database.models import Games
+import json
+
+
+def sorted_info_by_league() -> List:
     list_of_APL_matches = []
     script_dir = os.path.dirname(sys.argv[0])
     with open(os.path.join(script_dir, "matches_by_date.json"), "r") as file:
