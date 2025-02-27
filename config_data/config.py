@@ -8,7 +8,7 @@ else:
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 API_KEY = os.getenv("API_KEY")
-DB_PATH = r"..\database.db"
+DB_PATH = r"C:\Users\julia\PycharmProjects\python_basic_diploma\database\database.db"
 DEFAULT_COMMANDS = (
     ("start", "Запустить бота"),
     ("help", "Вывести справку"),

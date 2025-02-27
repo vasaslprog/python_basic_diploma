@@ -17,9 +17,8 @@ def sorted_info_by_league():
                     final_score = "матч не завершен"
                 else:
                     final_score = i_info["Tr1"] + " : " + i_info["Tr2"]
-                print(final_score)
                 time_begin = str(int(str(i_info["Esd"])[8:10]) + 10) + ":" + str(i_info["Esd"])[10:12]
-                nr_tour = i_info["ErnInf"]  # номер тура чемпионата
+
                 match_id = i_info["Eid"]  # id конкретного матча, нужен, чтобы найти матч в другом запросе API
                 team1 = i_info["T1"][0]["Nm"]  # команда хозяев
                 team2 = i_info["T2"][0]["Nm"]  # команда гостей

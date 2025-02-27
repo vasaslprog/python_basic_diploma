@@ -5,6 +5,7 @@ from api.find_matches_by_day import find_matches_by_date
 from api.find_cur_league import sorted_info_by_league
 from telebot.types import Message
 from loader import bot
+from database.models import History
 
 
 @bot.message_handler(commands=["custom_matches"])
@@ -18,6 +19,7 @@ def check_and_run(msg):
     date_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
     if date_pattern.match(date_text):
         date_of_event = str(date_text).replace("-", "")
+
         find_matches_by_date(your_date=date_of_event)
         matches_list = sorted_info_by_league()
         if len(matches_list) > 0:
@@ -25,3 +27,10 @@ def check_and_run(msg):
         else:
             bot.reply_to(msg, "\nНет матчей в выбранную вами дату."
                               r"Попробуйте выбрать другую дату, используя команду /custom_matches")
+        History.create(
+            user=msg.from_user.id,
+            name_users=msg.from_user.first_name,
+            time_req=datetime.datetime.now(),
+            command="today_matches",
+            res_func=matches_list,
+        )
