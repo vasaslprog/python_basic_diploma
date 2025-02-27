@@ -26,7 +26,7 @@ def sorted_info_by_league() -> List:
                 team1 = i_info["T1"][0]["Nm"]  # команда хозяев
                 team2 = i_info["T2"][0]["Nm"]  # команда гостей
                 team1_id = i_info["T1"][0]["ID"]  # id команды хозяев
-                team2_id = i_info["T2"][0]["ID"]  # id команды гостей
+                team2_id = i_info["T2"][0]["ID"]  # id команды гостей - для будущих изменений проекта
                 list_of_APL_matches.append(f"{time_begin} {team1} - {team2}")
 
                 Games.create(
